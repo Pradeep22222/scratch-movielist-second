@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { SearchForm } from "./components/SearchForm";
+import { MovieCard } from "./components/MovieCard";
+import { MovieArea } from "./components/MovieArea";
+import { useState } from "react";
 function App() {
+  const [str, setStr] = useState("");
+  const handleOnSubmit = (movieName) => {
+    setStr(movieName);
+  };
+  console.log(str);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
+      <div className="d-flex justify-content-center mt-5">
+        <MovieCard></MovieCard>
+      </div>
+      <hr />
+      <div className="d-flex justify-content-around">
+        <MovieArea></MovieArea>
+      </div>
     </div>
   );
 }
