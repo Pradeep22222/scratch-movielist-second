@@ -4,12 +4,14 @@ import { SearchForm } from "./components/SearchForm";
 import { MovieCard } from "./components/MovieCard";
 import { MovieArea } from "./components/MovieArea";
 import { useState } from "react";
+import { getMovie } from "./helpers/axiosHelpers";
 function App() {
-  const [str, setStr] = useState("");
-  const handleOnSubmit = (movieName) => {
-    setStr(movieName);
+  const [movie, setMovie] = useState({});
+  const handleOnSubmit = async (movieName) => {
+    const data = await getMovie(movieName);
+    console.log(data);
   };
-  console.log(str);
+
   return (
     <div>
       <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
