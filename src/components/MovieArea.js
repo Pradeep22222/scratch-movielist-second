@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { MovieCard } from "./MovieCard";
+import { ListCard } from "./ListCard";
+
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 export const MovieArea = ({ movieList }) => {
   const [displayList, setDisplayList] = useState([]);
+  const [view, setView] = useState("grid");
   useEffect(() => {
     setDisplayList(movieList);
   }, [movieList]);
@@ -18,6 +21,12 @@ export const MovieArea = ({ movieList }) => {
   };
   const onAllClick = () => {
     setDisplayList(movieList);
+  };
+  const setOnListView = () => {
+    setView("list");
+  };
+  const setOnGridView = () => {
+    setView("grid");
   };
   console.log(displayList);
   return (
@@ -37,8 +46,12 @@ export const MovieArea = ({ movieList }) => {
               </Button>
             </ButtonGroup>
             <ButtonGroup aria-label="Basic example">
-              <Button variant="info">Grid</Button>
-              <Button variant="secondary">List</Button>
+              <Button variant="info" onClick={setOnGridView}>
+                Grid
+              </Button>
+              <Button variant="secondary" onClick={setOnListView}>
+                List
+              </Button>
             </ButtonGroup>
           </div>
         </Row>
@@ -46,7 +59,10 @@ export const MovieArea = ({ movieList }) => {
 
       <Row>
         {displayList.map((item, i) => {
-          return <MovieCard key={i} movie={item}></MovieCard>;
+          return (
+            (view === "list" && <ListCard key={i} movie={item}></ListCard>) ||
+            (view === "grid" && <MovieCard key={i} movie={item}></MovieCard>)
+          );
         })}
       </Row>
     </div>
