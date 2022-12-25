@@ -7,22 +7,33 @@ import { useState } from "react";
 import { getMovie } from "./helpers/axiosHelpers";
 import { Alert } from "react-bootstrap";
 function App() {
+  const [movieList, setMovieList] = useState([]);
   const [movie, setMovie] = useState({});
   const handleOnSubmit = async (movieName) => {
     const data = await getMovie(movieName);
     setMovie(data);
   };
-  console.log(movie);
+  const handleOnMovieAdd = (movie) => {
+    setMovieList([...movieList, movie]);
+  }
+  console.log(movieList);
   return (
     <div>
       <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
       <div className="d-flex justify-content-center mt-5">
-        {(movie.imdbID && <MovieCard movie={movie}></MovieCard>) ||
-          (movie.Response === "False" && <Alert variant="danger">{movie.Error}</Alert>)}
+        {(movie.imdbID && (
+          <MovieCard
+            movie={movie}
+            handleOnMovieAdd={handleOnMovieAdd}
+          ></MovieCard>
+        )) ||
+          (movie.Response === "False" && (
+            <Alert variant="danger">{movie.Error}</Alert>
+          ))}
       </div>
       <hr />
       <div className="d-flex justify-content-around">
-        <MovieArea></MovieArea>
+        <MovieArea movieList={movieList}></MovieArea>
       </div>
     </div>
   );
