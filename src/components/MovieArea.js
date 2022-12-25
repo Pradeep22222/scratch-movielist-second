@@ -3,7 +3,8 @@ import { MovieCard } from "./MovieCard";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-export const MovieArea = ({ movieList,}) => {
+export const MovieArea = ({ movieList, }) => {
+  
   return (
     <div>
       {movieList.length>0 && (
@@ -24,7 +25,7 @@ export const MovieArea = ({ movieList,}) => {
 
       <Row>
         {movieList.map((item, i) => {
-          return <MovieCard movie={item}></MovieCard>;
+          return <MovieCard key={i} movie={item}></MovieCard>;
         })}
       </Row>
     </div>

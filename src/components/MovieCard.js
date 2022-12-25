@@ -9,10 +9,10 @@ export const MovieCard = ({ movie = {}, handleOnMovieAdd }) => {
         <Card.Title>{movie.Title}</Card.Title>
         <Card.Text>{movie.Plot}</Card.Text>
         <div className="d-flex justify-content-around">
-          <Button variant="danger" onClick={()=>handleOnMovieAdd(movie)}>
+          <Button variant="danger" onClick={()=>handleOnMovieAdd(movie,"romantic")}>
             Romantic
           </Button>
-          <Button variant="success" onClick={()=>handleOnMovieAdd(movie)}>
+          <Button variant="success" onClick={()=>handleOnMovieAdd(movie,"comedy")}>
             Comedy
           </Button>
         </div>

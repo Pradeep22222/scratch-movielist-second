@@ -13,9 +13,9 @@ function App() {
     const data = await getMovie(movieName);
     setMovie(data);
   };
-  const handleOnMovieAdd = (movie) => {
-    setMovieList([...movieList, movie]);
-  }
+  const handleOnMovieAdd = (movie, movieType) => {
+    setMovieList([...movieList, { ...movie, type: movieType }]);
+  };
   console.log(movieList);
   return (
     <div className="app">
@@ -34,7 +34,7 @@ function App() {
       </div>
       <hr />
       <div className="d-flex justify-content-around">
-        <MovieArea movieList={movieList} ></MovieArea>
+        <MovieArea movieList={movieList}></MovieArea>
       </div>
     </div>
   );
