@@ -1,0 +1,7 @@
+.app{
+    background: linear-gradient(to bottom right, rgba(244, 57, 57, 0.756), rgba(190, 245, 26, 0.882));
+    min-height:100vh
+}
+.buttonList-row{
+    min-width:100vh;
+}

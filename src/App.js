@@ -18,7 +18,8 @@ function App() {
   }
   console.log(movieList);
   return (
-    <div>
+    <div className="app">
+      <h1 className="text-center p-5">Movie List</h1>
       <SearchForm handleOnSubmit={handleOnSubmit}></SearchForm>
       <div className="d-flex justify-content-center mt-5">
         {(movie.imdbID && (
@@ -33,7 +34,7 @@ function App() {
       </div>
       <hr />
       <div className="d-flex justify-content-around">
-        <MovieArea movieList={movieList}></MovieArea>
+        <MovieArea movieList={movieList} ></MovieArea>
       </div>
     </div>
   );
