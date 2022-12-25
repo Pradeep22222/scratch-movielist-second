@@ -16,7 +16,7 @@ function App() {
   const handleOnMovieAdd = (movie, movieType) => {
     setMovieList([...movieList, { ...movie, type: movieType }]);
   };
-  console.log(movieList);
+
   return (
     <div className="app">
       <h1 className="text-center p-5">Movie List</h1>
